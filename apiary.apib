@@ -7,8 +7,39 @@ LazyTimes API is a simple time report tool.
 # Group Report
 Time report related resources of the **LazyTimes API**
 
+## Reporting [/report]
+### Report [POST]
++ Request (application/json)
+
+        { 
+            "project": "jetpak",
+            "duration": { 
+                "amount": 8,
+                "unit": "hours"
+            },
+            "date": 2014-05-13
+        }
+        
++ Response 200 
+          
+
+
+## Reporting [/report/{project}/{time_unit}]
+### Report [POST]
++ Response 201 (application/json)
+
+        { "id": 1,
+        }
+
+## Reporting [/report/{project}/{date}/{time_unit}]
+### Report [GET]
++ Response 201 (application/json)
+
+        { "id": 1,
+        }
+
 ## Notes Collection [/notes]
-### List all Notes [GET]
+### Report [GET]
 + Response 200 (application/json)
 
         [{

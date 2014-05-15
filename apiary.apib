@@ -7,21 +7,92 @@ LazyTimes API is a simple time report tool.
 # Group Report
 Time report related resources of the **LazyTimes API**
 
-## Reporting [/report]
-### Report [POST]
-+ Request (application/json)
+## Total time reports [/reports]
+### Get current total reports [GET]
++ Response 200 (application/json)
+
+        { "project": [
+            { "title": "jetpak", "total": { "amount": 32, "unit": "hours" }, "period": { "start": 2014-03-01, "end": 2014-05-14 }, "status": "active" },
+            { "title": "actic", "total": { "amount": 12, "unit": "hours" }, "period": { "start": 2014-04-15, "end": 2014-05-14 }, "status": "active" },
+            { "title": "ab", "total": { "amount": 1234, "unit": "hours" }, "period": { "start": 2013-12-15, "end": 2014-04-10 }, "status": "inactive" }
+            ]
+        }
+
+## Time report for period [/reports/{periodLength}]        
+### Get current reports for period [GET]
++ Response 200 (application/json)
 
         { 
-            "project": "jetpak",
-            "duration": { 
-                "amount": 8,
-                "unit": "hours"
+            "periodName": "week 20"
+            "project": [
+            { 
+                "title": "jetpak", 
+                "total": { 
+                    "amount": 32, 
+                    "unit": "hours" 
+                }, 
+                "period": { 
+                    "start": 2014-04-12, 
+                    "end": 2014-05-17 
+                }, 
+                "status": "active" 
             },
-            "date": 2014-05-13
+            { 
+                "title": "actic", 
+                "total": { 
+                    "amount": 12, 
+                    "unit": "hours"
+                }, 
+                "period": { 
+                    "start": 2014-04-12, 
+                    "end": 2014-05-17 
+                }, 
+                "status": "active"
+            } ]
         }
         
-+ Response 200 
+## Total time reports [/reports/{project}]
+### Get current total reports [GET]
++ Response 200 (application/json)
+
+        { "project": [
+            { "title": "jetpak", "total": { "amount": 32, "unit": "hours" }, "period": { "start": 2014-03-01, "end": 2014-05-14 }, "status": "active" },
+            { "title": "actic", "total": { "amount": 12, "unit": "hours" }, "period": { "start": 2014-04-15, "end": 2014-05-14 }, "status": "active" },
+            { "title": "ab", "total": { "amount": 1234, "unit": "hours" }, "period": { "start": 2013-12-15, "end": 2014-04-10 }, "status": "inactive" }
+            ]
+        }
+        
+### Get current total reports [POST]
++ Request (application/json)
+
+        {
+        }
+
++ Response 200 (application/json)
           
+        { 
+            "title": "jetpak", 
+            "total": { 
+                "amount": 32, 
+                "unit": "hours" 
+            }, 
+            "period": { 
+                "start": 2014-03-01, 
+                "end": 2014-05-14 
+            }, 
+            "status": "active" 
+        }
+
+## Time report for period of project [/reports/{project}/{periodLength}]        
+### Get current reports for period [GET]
++ Response 200 (application/json)
+
+        { "project": [
+            { "title": "jetpak", "total": { "amount": 32, "unit": "hours" }, "period": { "start": 2014-04-12, "end": 2014-05-17 }, "status": "active" },
+            { "title": "actic", "total": { "amount": 12, "unit": "hours" }, "period": { "start": 2014-04-12, "end": 2014-05-17 }, "status": "active" }
+            ],
+           "periodName": "week 20"
+        }
 
 
 ## Reporting [/report/{project}/{time_unit}]
